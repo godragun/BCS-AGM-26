@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECHXHIBIT | Digital Lamp</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/Ghost.png">
+    <!-- Google Fonts for Tech Look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="hero-overlay"></div>
+    <div class="bg-ghost"></div>
+
+    <!-- Top Right Controls -->
+    <div class="top-right-controls">
+        <i class="fas fa-wifi status-icon" id="status-icon" title="Check ESP32 Status"></i>
+        <i class="fas fa-expand fullscreen-icon" id="fullscreen-btn" title="Toggle Fullscreen"></i>
+    </div>
+
+    <div class="container">
+        <div class="title">
+            <h1 class="glitch" data-text="---------- ----">Techxhibit 2026.</h1>
+            <p>Touch a letter to light up the future</p>
+        </div>
+        <div class="lamp-text" style="justify-content: center;">
+            <!-- Digital Oil Lamp -->
+            <span class="letter" data-bulb="0">T</span>
+            <span class="letter" data-bulb="1">E</span>
+            <span class="letter" data-bulb="2">C</span>
+            <span class="letter" data-bulb="3">H</span>
+            <span class="letter" data-bulb="4">X</span>
+            <span class="letter" data-bulb="5">H</span>
+            <span class="letter" data-bulb="6">I</span>
+            <span class="letter" data-bulb="7">B</span>
+            <span class="letter" data-bulb="8">I</span>
+            <span class="letter" data-bulb="9">T</span>
+            <span class="letter" data-bulb="10">2.</span>
+            <span class="letter" data-bulb="11">0</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo-footer">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <img src="img/Ghost.png" alt="Techxhibit Logo" class="nav-logo-img">
+                    <span class="logo-text">TECH<span class="highlight">X</span>HIBIT</span>
+                </div>
+                <img src="img/LogoWithoutBg copy.png" alt="BCS Logo" class="nav-logo-img bcs-logo">
+            </div>
+            <p>&copy; Techxhibit 2026. All Rights Reserved.</p>
+            <div class="socials">
+                <a href="https://www.facebook.com/share/18333AayNE/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="mailto:bcssckdu@kdu.ac.lk"><i class="fab fa-google"></i></a>
+                <a href="https://www.instagram.com/bcs_kdu?igsh=MWd3b2FrenpxZmtndQ==" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/bcskdu/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>
