@@ -1,9 +1,9 @@
 /*
- * TECHXHIBIT Digital Oil Lamp Controller
+ * BCS AGM 26 Digital Oil Lamp Controller
  * This code runs on an ESP32.
  * 1. Connects to WiFi.
  * 2. Connects to Firebase Realtime Database.
- * 3. Listens for data changes on the '/lights' path to control 12 bulbs.
+ * 3. Listens for data changes on the '/lights' path to control 8 bulbs.
  * 
  * Required Libraries:
  * - WiFi (included with ESP32 core)
@@ -32,15 +32,14 @@ FirebaseData streamData;
 FirebaseAuth auth;
 FirebaseConfig config;
 
-// An array to hold the GPIO pin numbers for each of the 12 bulbs.
-// The order here corresponds to the `data-bulb` attribute in the HTML (0-11).
-// Example: bulbPins[0] is for 'T', bulbPins[1] is for 'E', etc.
+// An array to hold the GPIO pin numbers for each of the 8 bulbs.
+// The order here corresponds to the `data-bulb` attribute in the HTML (0-7).
+// Example: bulbPins[0] is for 'B', bulbPins[1] is for 'C', etc.
 // CHOOSE ANY AVAILABLE GPIO PINS.
 // WARNING: GPIO 12 is a strapping pin. If upload fails, disconnect it from the relay.
 // WARNING: GPIO 2 must be floating or LOW during boot to enter flash mode.
-const int bulbPins[12] = {
-  13, 12, 14, 27, 26, 25, // Bulbs 0-5
-  33, 32, 15, 2,  4,  5   // Bulbs 6-11
+const int bulbPins[8] = {
+  13, 12, 14, 27, 26, 25, 33, 32 // Bulbs 0-7
 };
 
 // Database paths
@@ -63,7 +62,7 @@ void streamCallback(FirebaseStream data) {
       if (data.dataTypeEnum() == fb_esp_rtdb_data_type_json) {
         FirebaseJson *json = data.to<FirebaseJson *>();
         FirebaseJsonData result;
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 8; i++) {
           json->get(result, String(i));
           if (result.success && result.to<String>() == "on") {
             digitalWrite(bulbPins[i], HIGH);
@@ -74,7 +73,7 @@ void streamCallback(FirebaseStream data) {
       } else if (data.dataTypeEnum() == fb_esp_rtdb_data_type_array) {
         FirebaseJsonArray *arr = data.to<FirebaseJsonArray *>();
         FirebaseJsonData result;
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 8; i++) {
           arr->get(result, i);
           if (result.success && result.to<String>() == "on") {
             digitalWrite(bulbPins[i], HIGH);
@@ -88,7 +87,7 @@ void streamCallback(FirebaseStream data) {
       path.remove(0, 1); // Remove leading '/' to get the bulb index
       int bulbIndex = path.toInt();
 
-      if (bulbIndex >= 0 && bulbIndex < 12) {
+      if (bulbIndex >= 0 && bulbIndex < 8) {
         if (data.dataTypeEnum() == fb_esp_rtdb_data_type_string) {
           String state = data.to<String>();
           digitalWrite(bulbPins[bulbIndex], state == "on" ? HIGH : LOW);
@@ -110,7 +109,7 @@ void setup() {
   delay(100);
 
   // Initialize all bulb pins as outputs and set them to LOW (off)
-  for (int i = 0; i < 12; i++) {
+  for (int i = 0; i < 8; i++) {
     pinMode(bulbPins[i], OUTPUT);
     digitalWrite(bulbPins[i], LOW);
   }
@@ -171,7 +170,7 @@ void setup() {
 
   } else {
     Serial.println("\nWiFi connection failed. Entering failsafe mode.");
-    for (int i = 0; i < 12; i++) {
+    for (int i = 0; i < 8; i++) {
       digitalWrite(bulbPins[i], HIGH);
     }
   }
@@ -205,7 +204,7 @@ void loop() {
       wasConnected = false;
       Serial.println("WiFi connection lost! Activating failsafe (all lights ON).");
       // Turn all lights on immediately so the exhibit isn't dark
-      for (int i = 0; i < 12; i++) {
+      for (int i = 0; i < 8; i++) {
         digitalWrite(bulbPins[i], HIGH);
       }
       needsSync = true;
@@ -231,7 +230,7 @@ void loop() {
         if (fbdo.dataTypeEnum() == fb_esp_rtdb_data_type_json) {
           FirebaseJson *json = fbdo.to<FirebaseJson *>();
           FirebaseJsonData result;
-          for (int i = 0; i < 12; i++) {
+          for (int i = 0; i < 8; i++) {
             json->get(result, String(i));
             if (result.success && result.to<String>() == "on") {
               digitalWrite(bulbPins[i], HIGH);
@@ -242,7 +241,7 @@ void loop() {
         } else if (fbdo.dataTypeEnum() == fb_esp_rtdb_data_type_array) {
           FirebaseJsonArray *arr = fbdo.to<FirebaseJsonArray *>();
           FirebaseJsonData result;
-          for (int i = 0; i < 12; i++) {
+          for (int i = 0; i < 8; i++) {
             arr->get(result, i);
             if (result.success && result.to<String>() == "on") {
               digitalWrite(bulbPins[i], HIGH);

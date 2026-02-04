@@ -1,4 +1,4 @@
-# 💡 TECHXHIBIT Digital Oil Lamp
+# 💡 BCS AGM 26 Digital Oil Lamp
 
 Welcome to the repository for the **TECHXHIBIT Digital Oil Lamp**, an interactive, web-controlled art installation. This project uses an ESP32 and the Google Firebase platform to transform a simple set of lights into a dynamic, engaging experience. Touch a letter on the screen from anywhere in the world, and watch it light up in real-time!
 
@@ -6,7 +6,7 @@ Welcome to the repository for the **TECHXHIBIT Digital Oil Lamp**, an interactiv
 
 ## ✨ Features
 
-- **Interactive Control**: Click on letters in the web UI to toggle 12 individual physical bulbs in real-time.
+- **Interactive Control**: Click on letters in the web UI to toggle 8 individual physical bulbs in real-time.
 - **Responsive Neon UI**: A futuristic, cyberpunk-inspired interface with glitch effects, glowing text, and dynamic animations.
 - **Real-time ESP32 Status**: A live icon shows whether the lamp controller is online, with its status pushed via a Firebase heartbeat.
 - **Robust Failsafe Mode**: If the ESP32 loses WiFi connection, it automatically turns all lights on, ensuring the exhibit is never dark.
@@ -60,8 +60,8 @@ To get the project running, you need to set up the hardware (ESP32 and bulbs) an
 ### Hardware Requirements
 
 - **ESP32 Development Board**: The brain of the operation.
-- **12 Bulbs**: Low-voltage bulbs (e.g., 12V) are recommended for safety.
-- **12-Channel Relay Module or Transistors**: To safely switch the bulbs with the ESP32's low-voltage GPIO signals.
+- **8 Bulbs**: Low-voltage bulbs (e.g., 12V) are recommended for safety.
+- **8-Channel Relay Module or Transistors**: To safely switch the bulbs with the ESP32's low-voltage GPIO signals.
 - **Power Supply**: A power supply appropriate for your bulbs (e.g., a 12V power adapter).
 - **Breadboard and Wires**: For connecting everything.
 
@@ -70,7 +70,7 @@ To get the project running, you need to set up the hardware (ESP32 and bulbs) an
 1.  **Connect ESP32 to Relay Module**: Connect the GPIO pins defined in `esp32_lamp.ino` to the input pins (`IN1`, `IN2`, etc.) of the relay module.
     - `bulbPins[0]` (GPIO 13) -> `IN1`
     - `bulbPins[1]` (GPIO 12) -> `IN2`
-    - ...and so on for all 12 bulbs.
+    - ...and so on for all 8 bulbs.
 2.  **Connect Power to Relays and Bulbs**:
     - Connect the positive terminal of your 12V power supply to the positive terminal of each bulb.
     - Connect the negative terminal of the 12V power supply to the `COM` (Common) port of each relay channel.
@@ -97,7 +97,7 @@ To get the project running, you need to set up the hardware (ESP32 and bulbs) an
       ```
     - Verify the `bulbPins` array matches the GPIO pins you wired to the relay module.
       ```cpp
-      const int bulbPins = { 13, 12, 14, 27, 26, 25, 33, 32, 15, 2, 4, 5 };
+      const int bulbPins = { 13, 12, 14, 27, 26, 25, 33, 32 };
       ```
 
 3.  **Upload the Code**:
@@ -166,7 +166,7 @@ Controls a single bulb.
 - **URL**: `/light`
 - **Method**: `GET`
 - **Parameters**:
-  - `bulb`: (integer) The index of the bulb to control (0-11).
+  - `bulb`: (integer) The index of the bulb to control (0-7).
   - `state`: (string) The desired state, either `"on"` or `"off"`.
 - **Example**: `http://192.168.1.100/light?bulb=0&state=on`
 - **Success Response**: `200 OK` with the text "OK".

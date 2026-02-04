@@ -8,6 +8,14 @@
     --font-header: 'Orbitron', sans-serif;
 }
 
+/* Properties for animation */
+@property --ripple-offset {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -25,17 +33,6 @@ body {
     text-align: center;
     overflow-x: hidden; /* Prevent horizontal scroll */
     overflow-y: auto;   /* Allow vertical scroll if content is tall */
-    /* Enhanced background from main site */
-    background-image: 
-        linear-gradient(rgba(57, 255, 20, 0.15) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(57, 255, 20, 0.15) 1px, transparent 1px);
-    background-size: 40px 40px;
-    animation: gridMove 20s linear infinite;
-}
-
-@keyframes gridMove {
-    0% { background-position: 0 0; }
-    100% { background-position: 40px 40px; }
 }
 
 /* Background Atmosphere Pulse */
@@ -53,20 +50,49 @@ body::before {
     100% { opacity: 0.7; transform: scale(1.2); }
 }
 
+/* New Spiral Background */
+body::after {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 200vmax; /* Large enough to cover screen */
+    height: 200vmax;
+    transform: translate(-50%, -50%);
+    background: repeating-radial-gradient(
+        circle at center,
+        transparent 0,
+        transparent var(--ripple-offset),
+        rgba(206, 237, 95, 0.2) var(--ripple-offset),
+        transparent calc(var(--ripple-offset) + 2px),
+        transparent 50px
+    );
+    mask-image: radial-gradient(
+        circle at center,
+        black 0%,
+        black 60%,
+        transparent 100%
+    );
+    animation: ripple 2s linear infinite;
+    z-index: -3; /* Below the pulse and ghost */
+}
+
+@keyframes ripple { to { --ripple-offset: 50px; } }
+
 /* Ghost background from main site */
 .bg-ghost {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80%;
-    max-width: 600px;
-    height: 80%;
-    background-image: url('img/Background.png');
-    background-size: contain;
+    width: 110vw;
+    height: 110vh;
+    max-width: none;
+    background-image: url('img/BG.jpg');
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.4;
+    opacity: 90%;
     z-index: -1;
     pointer-events: none;
     filter: drop-shadow(0 0 20px var(--neon-green));
@@ -93,58 +119,24 @@ body::before {
     z-index: 1;
 }
 
-.title h1 {
-    font-size: 3.5rem;
-    color: var(--text-white);
-    text-transform: uppercase;
-    letter-spacing: 3px;
+.title-image {
+    max-width: 90%;
+    width: 400px;
+    height: auto;
     margin-bottom: 10px;
-    background: linear-gradient(90deg, var(--neon-green), var(--neon-blue));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 10px var(--neon-green));
+    animation: smoothShade 3s ease-in-out infinite alternate;
 }
 
-.glitch {
-    position: relative;
-    animation: glitch-skew 1s infinite linear alternate-reverse;
-}
-.glitch::before,
-.glitch::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--bg-black);
-}
-.glitch::before {
-    left: 2px;
-    text-shadow: -2px 0 var(--neon-green);
-    clip: rect(44px, 450px, 56px, 0);
-    animation: glitch-anim 5s infinite linear alternate-reverse;
-}
-.glitch::after {
-    left: -2px;
-    text-shadow: -2px 0 var(--neon-blue), 2px 2px var(--neon-green);
-    animation: glitch-anim2 1s infinite linear alternate-reverse;
-}
-
-@keyframes glitch-anim {
-    0% { clip: rect(12px, 9999px, 98px, 0); } 10% { clip: rect(5px, 9999px, 82px, 0); } 20% { clip: rect(45px, 9999px, 100px, 0); } 30% { clip: rect(87px, 9999px, 23px, 0); } 40% { clip: rect(32px, 9999px, 5px, 0); } 50% { clip: rect(12px, 9999px, 76px, 0); } 60% { clip: rect(34px, 9999px, 9px, 0); } 70% { clip: rect(99px, 9999px, 43px, 0); } 80% { clip: rect(23px, 9999px, 88px, 0); } 90% { clip: rect(78px, 9999px, 12px, 0); } 100% { clip: rect(43px, 9999px, 99px, 0); }
-}
-@keyframes glitch-anim2 {
-    0% { clip: rect(85px, 9999px, 23px, 0); } 10% { clip: rect(13px, 9999px, 55px, 0); } 20% { clip: rect(3px, 9999px, 76px, 0); } 30% { clip: rect(99px, 9999px, 33px, 0); } 40% { clip: rect(2px, 9999px, 78px, 0); } 50% { clip: rect(88px, 9999px, 43px, 0); } 60% { clip: rect(34px, 9999px, 9px, 0); } 70% { clip: rect(99px, 9999px, 43px, 0); } 80% { clip: rect(23px, 9999px, 88px, 0); } 90% { clip: rect(78px, 9999px, 12px, 0); } 100% { clip: rect(43px, 9999px, 99px, 0); }
-}
-@keyframes glitch-skew {
-    0% { transform: skew(0); } 1% { transform: skew(1deg); } 2% { transform: skew(-1deg); } 3% { transform: skew(0); }
+@keyframes smoothShade {
+    from { filter: drop-shadow(0 0 10px var(--neon-green)); }
+    to { filter: drop-shadow(0 0 25px var(--neon-green)); }
 }
 
 .title p {
     font-size: 1.1rem;
     color: var(--neon-blue);
-    margin-bottom: 60px;
+    margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -153,7 +145,7 @@ body::before {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
 }
 
 .letter {
@@ -174,16 +166,16 @@ body::before {
 }
 
 .letter.active {
-    color: var(--neon-green);
+    color: #d0f0c0; /* Smooth tea green */
     animation: letterGlow 1.5s ease-in-out infinite alternate;
 }
 
 @keyframes letterGlow {
     from {
-        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 30px var(--neon-green), 0 0 40px var(--neon-green), 0 0 50px var(--neon-green);
+        text-shadow: 0 0 5px #fff, 0 0 10px #ffeb3b, 0 0 20px #4caf50;
     }
     to {
-        text-shadow: 0 0 10px #fff, 0 0 30px var(--neon-blue), 0 0 40px var(--neon-blue), 0 0 50px var(--neon-blue);
+        text-shadow: 0 0 10px #fff, 0 0 20px #ffeb3b, 0 0 40px #4caf50;
     }
 }
 
