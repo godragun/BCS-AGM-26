@@ -1,6 +1,6 @@
 # 💡 BCS AGM 26 Digital Oil Lamp
 
-Welcome to the repository for the **TECHXHIBIT Digital Oil Lamp**, an interactive, web-controlled art installation. This project uses an ESP32 and the Google Firebase platform to transform a simple set of lights into a dynamic, engaging experience. Touch a letter on the screen from anywhere in the world, and watch it light up in real-time!
+Welcome to the repository for the **BCS AGM 26 Digital Oil Lamp**, an interactive, web-controlled art installation. This project uses an ESP32 and the Google Firebase platform to transform a simple set of lights into a dynamic, engaging experience. Touch a letter on the screen from anywhere in the world, and watch it light up in real-time!
 
 ![Lamp Interface](img/UI.jpg)
 
@@ -109,15 +109,14 @@ To get the project running, you need to set up the hardware (ESP32 and bulbs) an
 #### 2. Frontend (Web Interface)
 
 1.  **Configuration**:
-    - The interface defaults to `192.168.1.100`.
-    - To use a different IP without editing code, add it to the URL:
-      `https://your-project.web.app/?ip=192.168.1.50`
+    - The web interface is pre-configured with your Firebase credentials in `script.js`.
+    - Ensure **Anonymous Authentication** is enabled in your Firebase Console.
 
 2.  **Host the Web Files**:
     - **Firebase Hosting**:
       1. **Create Project in Console**:
          - Go to Firebase Console.
-         - Click **Add project**, name it (e.g., `techxhibit-lamp`), and create it.
+         - Click **Add project**, name it (e.g., bcs-agm-26), and create it.
       2. **Deploy via Terminal**:
          - Install Firebase CLI: `npm install -g firebase-tools`
          - Run `firebase login`
@@ -128,20 +127,12 @@ To get the project running, you need to set up the hardware (ESP32 and bulbs) an
            - Overwrite index.html: `No`.
          - Run `firebase deploy`
 
-3.  **⚠️ Important Security Note (Mixed Content)**:
-    - Since Firebase uses HTTPS and the ESP32 uses HTTP, browsers will block the connection by default.
-    - **Fix**:
-      1. Click the Lock icon 🔒 in the browser address bar.
-      2. Select **Site Settings**.
-      3. Set **Insecure Content** to **Allow**.
-      4. Reload the page.
-
 ---
 
 ## 📂 File Structure
 
 ```
-TECHXHIBIT oil lamp/
+BCS AGM 26/
 ├── esp32_lamp.ino      # Arduino code for the ESP32 (Backend)
 ├── index.html          # The main HTML file for the web interface (Frontend)
 ├── style.css           # All styling for the web interface
@@ -155,32 +146,24 @@ TECHXHIBIT oil lamp/
 
 ---
 
-## 📡 API Endpoints
+## 📡 Firebase Data Structure
 
-The ESP32 web server exposes two simple HTTP GET endpoints:
+The system uses the Firebase Realtime Database to sync state.
 
-### `/light`
+### `/lights`
 
-Controls a single bulb.
+Stores the state of each individual bulb.
 
-- **URL**: `/light`
-- **Method**: `GET`
-- **Parameters**:
-  - `bulb`: (integer) The index of the bulb to control (0-7).
-  - `state`: (string) The desired state, either `"on"` or `"off"`.
-- **Example**: `http://192.168.1.100/light?bulb=0&state=on`
-- **Success Response**: `200 OK` with the text "OK".
-- **Error Response**: `400 Bad Request` if parameters are missing or invalid.
+ - **Path**: `/lights/{bulb_index}`
+ - **Value**: `string` ("on" or "off")
+ - **Example**: `/lights/0` -> `"on"`
 
 ### `/status`
 
-Checks if the ESP32 is online and responsive.
+Used for the heartbeat mechanism to detect if the ESP32 is online.
 
-- **URL**: `/status`
-- **Method**: `GET`
-- **Parameters**: None.
-- **Example**: `http://192.168.1.100/status`
-- **Success Response**: `200 OK` with the text "ESP32 Online".
+ - **Path**: `/status/timestamp`
+ - **Value**: `number` (Unix timestamp)
 
 ---
 
@@ -197,16 +180,15 @@ This project was designed to be more than just functional; it's an experience. T
 
 - **Letters don't light up**:
   1. Check the browser's developer console (F12) for `fetch` errors.
-  2. Ensure the `ESP32_IP_ADDRESS` in `script.js` is correct.
-  3. Verify your device is on the same WiFi network as the ESP32.
-  4. Check the ESP32's serial monitor for any error messages.
+  2. Ensure the `firebaseConfig` in `script.js` is correct.
+  3. Check the ESP32's serial monitor for any error messages.
 
 - **Status icon is red (Offline)**:
-  - This means the web page cannot reach the ESP32 at the configured IP address. Double-check the IP and your network connection.
+  - This means the ESP32 has stopped sending heartbeats to Firebase. Check the ESP32 power and WiFi connection.
 
 - **All lights are on, but nothing is clickable**:
   - This is the failsafe mode. It means the ESP32 could not connect to WiFi at startup or lost its connection. Check your WiFi credentials in `esp32_lamp.ino` and restart the ESP32.
 
 ---
 
-&copy; Techxhibit 2026. All Rights Reserved.
+&copy; BCS AGM 26 2026. All Rights Reserved.

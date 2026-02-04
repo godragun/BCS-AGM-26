@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "techxhibit-digital-oil-lamp"
-  }
+    "default": "techxhibit-digital-oil-lamp",
+    "firebase deploy": "bcs-agm-26"
+  },
+  "targets": {},
+  "etags": {}
 }

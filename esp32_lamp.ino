@@ -20,8 +20,8 @@
 #define WIFI_SSID "LAPTOP-42D6DMLI 6504"
 #define WIFI_PASSWORD "u<266T02"
 
-#define FB_API_KEY "AIzaSyD4JKqmClYLbd-Og7U1KVBdcKu8MfGDQ3o"
-#define FB_PROJECT_ID "techxhibit-digital-oil-lamp"
+#define FB_API_KEY "AIzaSyBqYu3g59Q65Wwno8QZX0aK2kZpIn6x5ME"
+#define FB_PROJECT_ID "bcs-agm-26"
 #define FB_USER_EMAIL "techxhibit2.0@gmail.com"
 #define FB_USER_PASSWORD "12345678"
 

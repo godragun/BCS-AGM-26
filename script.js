@@ -2,13 +2,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- 1. CONFIGURATION ---
     // Firebase configuration from your project settings
     const firebaseConfig = {
-        apiKey: "AIzaSyD4JKqmClYLbd-Og7U1KVBdcKu8MfGDQ3o",
-        authDomain: "techxhibit-digital-oil-lamp.firebaseapp.com",
-        databaseURL: "https://techxhibit-digital-oil-lamp-default-rtdb.firebaseio.com",
-        projectId: "techxhibit-digital-oil-lamp",
-        storageBucket: "techxhibit-digital-oil-lamp.firebasestorage.app",
-        messagingSenderId: "1029859232653",
-        appId: "1:1029859232653:web:d448551e5aa8f0fbb9cbc4"
+        apiKey: "AIzaSyBqYu3g59Q65Wwno8QZX0aK2kZpIn6x5ME",
+        authDomain: "bcs-agm-26.firebaseapp.com",
+        databaseURL: "https://bcs-agm-26-default-rtdb.firebaseio.com",
+        projectId: "bcs-agm-26",
+        storageBucket: "bcs-agm-26.firebasestorage.app",
+        messagingSenderId: "413608420783",
+        appId: "1:413608420783:web:05bd633203850541a6fb5a",
+        measurementId: "G-68KMW8LDQB"
     };
 
     // Initialize Firebase

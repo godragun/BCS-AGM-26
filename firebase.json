@@ -4,7 +4,11 @@
     "ignore": [
       "firebase.json",
       "**/.*",
-      "**/node_modules/**"
+      "**/node_modules/**",
+      "**/*.ino",
+      "README.md",
+      "firebase-debug.log",
+      "*.log"
     ]
   }
 }
