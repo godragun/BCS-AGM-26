@@ -39,7 +39,7 @@ FirebaseConfig config;
 // WARNING: GPIO 12 is a strapping pin. If upload fails, disconnect it from the relay.
 // WARNING: GPIO 2 must be floating or LOW during boot to enter flash mode.
 const int bulbPins[8] = {
-  13, 12, 14, 27, 26, 25, 33, 32 // Bulbs 0-7
+  18, 19, 21, 22, 23, 13, 14, 27 // Bulbs 0-7
 };
 
 // Database paths
