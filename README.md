@@ -2,6 +2,8 @@
 
 Welcome to the repository for the **BCS AGM 26 Digital Oil Lamp**, an interactive, web-controlled art installation. This project uses an ESP32 and the Google Firebase platform to transform a simple set of lights into a dynamic, engaging experience. Touch a letter on the screen from anywhere in the world, and watch it light up in real-time!
 
+**🌐 Live Demo:** https://bcs-agm-26.web.app
+
 ![Lamp Interface](img/UI.jpg)
 
 ## ✨ Features
