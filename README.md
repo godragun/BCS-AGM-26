@@ -92,10 +92,14 @@ To get the project running, you need to set up the hardware (ESP32 and bulbs) an
 
 2.  **Configure `esp32_lamp.ino`**:
     - Open the `esp32_lamp.ino` file.
-    - Update your WiFi credentials:
+    - Replace the placeholders with your credentials:
       ```cpp
-      const char* ssid = "YOUR_WIFI_SSID";
-      const char* password = "YOUR_WIFI_PASSWORD";
+      #define WIFI_SSID "YOUR_WIFI_SSID"
+      #define WIFI_PASSWORD "YOUR_WIFI_PASSWORD"
+      #define FB_API_KEY "YOUR_FIREBASE_API_KEY"
+      #define FB_PROJECT_ID "YOUR_FIREBASE_PROJECT_ID"
+      #define FB_USER_EMAIL "YOUR_FIREBASE_USER_EMAIL"
+      #define FB_USER_PASSWORD "YOUR_FIREBASE_USER_PASSWORD"
       ```
     - Verify the `bulbPins` array matches the GPIO pins you wired to the relay module.
       ```cpp
@@ -111,7 +115,7 @@ To get the project running, you need to set up the hardware (ESP32 and bulbs) an
 #### 2. Frontend (Web Interface)
 
 1.  **Configuration**:
-    - The web interface is pre-configured with your Firebase credentials in `script.js`.
+    - Replace the placeholders in `script.js` with your Firebase config from **Firebase Console > Project Settings > Your apps**.
     - Ensure **Anonymous Authentication** is enabled in your Firebase Console.
 
 2.  **Host the Web Files**:

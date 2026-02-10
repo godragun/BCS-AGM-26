@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
     // --- 1. CONFIGURATION ---
-    // Firebase configuration from your project settings
+    // Firebase configuration - add your own from Firebase Console > Project Settings
     const firebaseConfig = {
-        apiKey: "AIzaSyBqYu3g59Q65Wwno8QZX0aK2kZpIn6x5ME",
-        authDomain: "bcs-agm-26.firebaseapp.com",
-        databaseURL: "https://bcs-agm-26-default-rtdb.firebaseio.com",
-        projectId: "bcs-agm-26",
-        storageBucket: "bcs-agm-26.firebasestorage.app",
-        messagingSenderId: "413608420783",
-        appId: "1:413608420783:web:05bd633203850541a6fb5a",
-        measurementId: "G-68KMW8LDQB"
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+        databaseURL: "https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com",
+        projectId: "YOUR_PROJECT_ID",
+        storageBucket: "YOUR_PROJECT_ID.firebasestorage.app",
+        messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+        appId: "YOUR_APP_ID",
+        measurementId: "YOUR_MEASUREMENT_ID"
     };
 
     // Initialize Firebase

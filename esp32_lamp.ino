@@ -17,13 +17,14 @@
 #include "addons/TokenHelper.h"
 
 // --- CONFIGURATION ---
-#define WIFI_SSID "LAPTOP-42D6DMLI 6504"
-#define WIFI_PASSWORD "u<266T02"
+// Add your credentials before uploading
+#define WIFI_SSID "YOUR_WIFI_SSID"
+#define WIFI_PASSWORD "YOUR_WIFI_PASSWORD"
 
-#define FB_API_KEY "AIzaSyBqYu3g59Q65Wwno8QZX0aK2kZpIn6x5ME"
-#define FB_PROJECT_ID "bcs-agm-26"
-#define FB_USER_EMAIL "techxhibit2.0@gmail.com"
-#define FB_USER_PASSWORD "12345678"
+#define FB_API_KEY "YOUR_FIREBASE_API_KEY"
+#define FB_PROJECT_ID "YOUR_FIREBASE_PROJECT_ID"
+#define FB_USER_EMAIL "YOUR_FIREBASE_USER_EMAIL"
+#define FB_USER_PASSWORD "YOUR_FIREBASE_USER_PASSWORD"
 
 
 // Define Firebase objects
