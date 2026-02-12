@@ -1,26 +1,11 @@
-# BCS-AGM-26
-
-## Introduction
-
-The BCS-AGM-26 project aims to...
+# BCS AGM 26
 
 ## Features
 
 - Feature 1
 - Feature 2
+- Feature 3
 
-## Installation
+## Setup and Installation
 
-To install the project, run:
-
-```bash
-# Installation commands here
-```
-
-## Usage
-
-You can use this project by...
-
-## License
-
-This project is licensed under the MIT License.
+Instructions to set up the project...
