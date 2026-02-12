@@ -1,11 +1,7 @@
-# BCS AGM 26
+# BCS-AGM-26
 
-## Features
+## Overview
+... (other sections of README.md remain unchanged) ...
 
-- Feature 1
-- Feature 2
-- Feature 3
-
-## Setup and Installation
-
-Instructions to set up the project...
+## Additional Instructions
+... (other sections of README.md remain unchanged) ...
