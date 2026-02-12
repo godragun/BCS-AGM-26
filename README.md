@@ -1,6 +1,11 @@
 # 💡 BCS AGM 26 Digital Oil Lamp
 
-Welcome to the repository for the **BCS AGM 26 Digital Oil Lamp**, an interactive, web-controlled art installation. This project uses an ESP32 and the Google Firebase platform to transform a simple set of lights into a dynamic, engaging experience. Touch a letter on the screen from anywhere in the world, and watch it light up in real-time!
+![AGM 2](AGM%202.jpeg)
+![AGM 3](AGM%203.jpeg)
+![AGM 5](AGM%205.jpeg)
+![AGM Dark](AGM%20dark.jpeg)
+
+Welcome to the repository for the **BCS AGM 26 Digital Oil Lamp**, an interactive, web-controlled art installation. This project uses an ESP32 and the Google Firebase platform to transform a simple se[...]  
 
 **🌐 Live Demo:** https://bcs-agm-26.web.app
 
@@ -21,7 +26,7 @@ Welcome to the repository for the **BCS AGM 26 Digital Oil Lamp**, an interactiv
 
 ## 🏛️ System Architecture
 
-This project uses **Firebase Realtime Database** as a bridge between the web interface and the ESP32 microcontroller, allowing for control over the internet without requiring devices to be on the same local network.
+This project uses **Firebase Realtime Database** as a bridge between the web interface and the ESP32 microcontroller, allowing for control over the internet without requiring devices to be on the same[...]  
 
 ```mermaid
 graph TD;
@@ -79,7 +84,7 @@ To get the project running, you need to set up the hardware (ESP32 and bulbs) an
     - Connect the `NO` (Normally Open) port of each relay channel to the negative terminal of its corresponding bulb.
 3.  **Power the ESP32**: Power the ESP32 board via its USB port.
 
-> **⚠️ Safety Warning**: Always be cautious when working with electricity. Ensure your power supply matches your bulb's voltage requirements. It's safer to build and test the circuit with the main power supply disconnected.
+> **⚠️ Safety Warning**: Always be cautious when working with electricity. Ensure your power supply matches your bulb's voltage requirements. It's safer to build and test the circuit with the main[...]  
 
 ### Software Configuration
 
@@ -162,7 +167,7 @@ Stores the state of each individual bulb.
 
  - **Path**: `/lights/{bulb_index}`
  - **Value**: `string` ("on" or "off")
- - **Example**: `/lights/0` -> `"on"`
+ - **Example**: `/lights/0` -> "on"
 
 ### `/status`
 
