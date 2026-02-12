@@ -1,9 +1,17 @@
 # 💡 BCS AGM 26 Digital Oil Lamp
 
-![AGM 2](AGM%202.jpeg)
-![AGM 3](AGM%203.jpeg)
-![AGM 5](AGM%205.jpeg)
-![AGM Dark](AGM%20dark.jpeg)
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="AGM%202.jpeg" alt="AGM 2" width="400"/></td>
+      <td><img src="AGM%203.jpeg" alt="AGM 3" width="400"/></td>
+    </tr>
+    <tr>
+      <td><img src="AGM%205.jpeg" alt="AGM 5" width="400"/></td>
+      <td><img src="AGM%20dark.jpeg" alt="AGM Dark" width="400"/></td>
+    </tr>
+  </table>
+</div>
 
 Welcome to the repository for the **BCS AGM 26 Digital Oil Lamp**, an interactive, web-controlled art installation. This project uses an ESP32 and the Google Firebase platform to transform a simple se[...]  
 
